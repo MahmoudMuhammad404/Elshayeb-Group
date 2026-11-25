@@ -10,7 +10,7 @@ export default function Footer({ lang }) {
       <div className="wrap ftr-in">
         <div className="ftr-brand">
           <b>ELSHAYEB GROUP</b>
-          <p lang="ar" dir="rtl">مجموعة الشايب — نبني الأعمال.. ونصنع الفرص.</p>
+          <p lang={lang} dir={lang === 'ar' ? 'rtl' : 'ltr'}>{f.tagline}</p>
         </div>
         <nav className="ftr-nav" aria-label="Footer">
           {SECTIONS.map((id) => (

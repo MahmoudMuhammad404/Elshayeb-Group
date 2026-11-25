@@ -10,7 +10,7 @@ export default function HeroMobile({ copy, lang }) {
         <h1>
           <span>{copy.title[0]}</span> <em>{copy.title[1]}</em>
         </h1>
-        <div className="ar" lang="ar" dir="rtl">{copy.tagline}</div>
+        <div className="hero-tagline" lang={lang} dir={lang === 'ar' ? 'rtl' : 'ltr'}>{copy.tagline}</div>
         <a className="cta" href="#companies">{copy.cta}</a>
       </div>
       <div className="hm-tree">

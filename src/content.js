@@ -30,7 +30,7 @@ export const HERO = {
   en: {
     kicker: 'ELSHAYEB GROUP · PARENT COMPANY',
     title: ['One group.', 'Three companies.'],
-    tagline: 'مجموعة الشايب — نبني الأعمال.. ونصنع الفرص.',
+    tagline: 'Elshayeb Group — Building businesses.. Creating opportunities.',
     cta: 'Explore Our Companies →',
   },
   ar: {
@@ -100,7 +100,7 @@ export const ABOUT = {
     eyebrow: 'ABOUT',
     title: 'Specialization builds strength.',
     intro: 'Elshayeb Group is the parent company of Go Ads Hub, Zeroo1 and Elshayeb Media Production. Each company is focused on what it does best, and together they form one group.',
-    tagline: 'مجموعة الشايب — نبني الأعمال.. ونصنع الفرص.',
+    tagline: 'Elshayeb Group — Building businesses.. Creating opportunities.',
     visionTitle: 'Our Vision',
     vision: 'To build a strong and evolving business group of specialized companies capable of competing and growing in their markets, while expanding into new industries.',
     missionTitle: 'Our Mission',
@@ -179,6 +179,6 @@ export const CONTACT_COPY = {
 };
 
 export const FOOTER = {
-  en: { rights: 'All Rights Reserved.', top: 'Back to top' },
-  ar: { rights: 'جميع الحقوق محفوظة.', top: 'العودة للأعلى' },
+  en: { rights: 'All Rights Reserved.', top: 'Back to top', tagline: 'Elshayeb Group — Building businesses.. Creating opportunities.' },
+  ar: { rights: 'جميع الحقوق محفوظة.', top: 'العودة للأعلى', tagline: 'مجموعة الشايب — نبني الأعمال.. ونصنع الفرص.' },
 };

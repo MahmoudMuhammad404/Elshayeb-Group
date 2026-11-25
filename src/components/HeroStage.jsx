@@ -17,7 +17,7 @@ export default function HeroStage({ copy, lang, layout }) {
   return (
     <>
       <EnergyLines layout={layout} comets={comets} ripples={ripples} nodeRings={nodeRings} />
-      <Headline copy={copy} />
+      <Headline copy={copy} lang={lang} />
       <SourceSphere ref={source} layout={layout} />
       {COMPANIES.map((c, i) => (
         <CompanyCard key={c.id} company={c} y={layout.ys[i]} lang={lang} layout={layout} ref={(el) => (cards.current[i] = el)} />

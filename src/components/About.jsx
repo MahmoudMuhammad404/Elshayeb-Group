@@ -11,7 +11,7 @@ export default function About({ lang }) {
             <div className="eyebrow">{s.eyebrow}</div>
             <h2>{s.title}</h2>
             <p className="lead">{s.intro}</p>
-            <p className="ar-tag" lang="ar" dir="rtl">{s.tagline}</p>
+            <p className="ar-tag" lang={lang} dir={lang === 'ar' ? 'rtl' : 'ltr'}>{s.tagline}</p>
           </Reveal>
           <Reveal className="org" delay={120} aria-hidden="true">
             <svg viewBox="0 0 100 100" preserveAspectRatio="none">

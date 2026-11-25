@@ -86,7 +86,8 @@ h2 em{font-style:normal;color:var(--acc)}
 
 /* about */
 .about-top{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,96px);align-items:center}
-.ar-tag{display:block;width:max-content;max-width:100%;margin:26px 0 0;font-size:20px;color:rgba(255,255,255,.85);font-family:Cairo,sans-serif}
+.ar-tag{display:block;width:max-content;max-width:100%;margin:26px 0 0;font-size:20px;color:rgba(255,255,255,.85)}
+body.is-ar .ar-tag{font-family:Cairo,sans-serif}
 .org{--pillw:238px;position:relative;height:300px;width:100%;max-width:580px;direction:ltr;justify-self:end}
 .org svg{position:absolute;left:112px;right:var(--pillw);top:0;width:calc(100% - 112px - var(--pillw));height:100%;overflow:visible}
 .org path{fill:none;stroke:rgba(244,74,34,.75);stroke-width:1.6;stroke-dasharray:5 7;animation:flow 2.4s linear infinite}
