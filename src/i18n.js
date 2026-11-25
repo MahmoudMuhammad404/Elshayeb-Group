@@ -1,40 +1,26 @@
-// All visible text lives here. Arabic strings for nav/CTA/cards are drafts, to be reviewed.
-export const COPY = {
-  en: {
-    nav: ['Companies', 'About', 'Careers', 'Contact'],
-    kicker: 'ELSHAYEB GROUP · PARENT COMPANY',
-    title: ['One group.', 'Three companies.'],
-    tagline: 'مجموعة الشايب — نبني الأعمال.. ونصنع الفرص.',
-    cta: 'Explore Our Companies →',
-    langButton: 'EN / ع',
-  },
-  ar: {
-    nav: ['الشركات', 'من نحن', 'الوظائف', 'تواصل معنا'],
-    kicker: 'مجموعة الشايب · الشركة الأم',
-    title: ['مجموعة واحدة.', 'ثلاث شركات.'],
-    tagline: 'مجموعة الشايب — نبني الأعمال.. ونصنع الفرص.',
-    cta: 'اكتشف شركاتنا ←',
-    langButton: 'EN / ع',
-  },
-};
+// Short text used inside the hero cards. Arabic strings are drafts, to be reviewed.
+import { COMPANY_LINKS } from './config.js';
 
 export const COMPANIES = [
   {
     id: 'goads',
+    url: COMPANY_LINKS.goads,
     name: 'GO ADS HUB',
     logo: 'assets/goads.png',
-    logoStyle: { maxWidth: 140, maxHeight: 46 },
+    logoStyle: { maxWidth: 122, maxHeight: 44 },
     desc: { en: 'Content · Marketing · Media Buying', ar: 'محتوى · تسويق · شراء إعلامي' },
   },
   {
     id: 'zeroo1',
+    url: COMPANY_LINKS.zeroo1,
     name: 'ZEROO1',
     logo: 'assets/zeroo1.svg',
-    logoStyle: { maxWidth: 130, maxHeight: 42 },
+    logoStyle: { maxWidth: 116, maxHeight: 40 },
     desc: { en: 'Programming', ar: 'برمجة' },
   },
   {
     id: 'elmedia',
+    url: COMPANY_LINKS.elmedia,
     name: 'ELSHAYEB MEDIA',
     logo: 'assets/el_word.png',
     logoStyle: { width: 118 },

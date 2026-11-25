@@ -1,30 +1,36 @@
-html,body{margin:0;height:100%;background:#050507;overflow:hidden;font-family:Helvetica,Arial,sans-serif;color:#fff}
-#stage{position:absolute;left:0;top:0;width:1440px;height:900px;transform-origin:0 0;overflow:hidden}
-.nav{position:absolute;top:0;left:0;right:0;display:flex;justify-content:space-between;align-items:center;padding:28px 56px;font-size:14px;z-index:9}
-.nav b{letter-spacing:.2em;font-size:15px}.nav span{margin-left:30px;opacity:.7}
-.btn{border:1px solid rgba(255,255,255,.35);padding:10px 20px;border-radius:99px;background:rgba(255,255,255,.06)}
-.kick{font-size:12px;letter-spacing:.35em;color:#F44A22}
-h1{font-weight:300;margin:14px 0;letter-spacing:-.02em;font-size:54px;line-height:1.05}h1 em{font-style:normal;color:#F44A22}
-.ar{opacity:.65;font-size:17px;margin-bottom:26px}
-.cta{display:inline-block;background:#fff;color:#000;padding:14px 28px;border-radius:99px;font-size:14px;font-weight:600}
-.hd{position:absolute;left:56px;top:300px;width:480px;z-index:5}
-svg{position:absolute;left:0;top:0}
-.card{position:absolute;left:960px;width:430px;height:100px;margin-top:-50px;box-sizing:border-box;padding:0 26px;border-radius:18px;z-index:5;background:linear-gradient(160deg,rgba(34,32,38,.94),rgba(12,12,16,.94));border:1px solid rgba(255,255,255,.16);box-shadow:0 24px 70px rgba(0,0,0,.65);display:flex;align-items:center;gap:22px}
-.card .lg{width:140px;display:flex;justify-content:center}
-.card h3{margin:0 0 5px;font-size:14px;letter-spacing:.14em}.card p{margin:0;font-size:12px;white-space:nowrap;opacity:.65}
-.ar2{position:absolute;right:56px;bottom:36px;font-size:12px;opacity:.5;letter-spacing:.2em}
-.src{position:absolute;left:520px;top:366px;width:168px;height:168px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;z-index:4;
-background:radial-gradient(circle at 35% 28%,#43312a,#0b0b0e 70%);border:1px solid rgba(244,74,34,.85);box-shadow:0 0 90px rgba(244,74,34,.6),0 0 220px rgba(244,74,34,.25),inset 0 0 36px rgba(244,74,34,.35)}.src{background:radial-gradient(circle at 34% 26%,rgba(255,255,255,.28) 0,rgba(255,255,255,0) 22%),radial-gradient(circle at 50% 55%,#2b1510 0,#0c0707 72%)!important;
-box-shadow:inset -14px -18px 36px rgba(244,74,34,.75),inset 10px 12px 26px rgba(255,255,255,.14),0 0 90px rgba(244,74,34,.55),0 0 220px rgba(244,74,34,.22)!important;border:1px solid rgba(255,140,90,.55)!important}
-.src:before{content:"";position:absolute;left:30px;top:16px;width:70px;height:34px;border-radius:50%;background:linear-gradient(180deg,rgba(255,255,255,.4),rgba(255,255,255,0));transform:rotate(-24deg);filter:blur(2px)}
-.card{transform:perspective(1300px) rotateY(-11deg);transform-origin:0 50%;
+html,body{margin:0;background:#050507;color:#fff;font-family:'Inter Variable',Inter,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+.hero{position:relative;overflow:hidden;background:#050507}
+#stage{position:absolute;left:0;top:0;height:100%;transform-origin:0 0;direction:ltr}
+#scene{position:absolute;left:0}
+#scene svg{position:absolute;left:0;top:0}
+
+.hd{position:absolute;left:0;right:0;top:118px;z-index:5;text-align:center}
+.kick{font-size:15px;letter-spacing:.38em;color:#F44A22}
+.hd h1,.hm h1{font-weight:300;margin:14px 0 8px;letter-spacing:-.025em;font-size:84px;line-height:1.05;white-space:nowrap}
+.hd h1 em,.hm h1 em{font-style:normal;color:#F44A22}.hd h1 em{margin-left:.25em}.hd h1 br{display:none}
+.ar{opacity:.7;font-size:23px;margin:6px 0 24px;direction:rtl}
+.cta{display:inline-block;background:#fff;color:#000;padding:17px 36px;border-radius:99px;font-size:18px;font-weight:600;text-decoration:none}
+
+.src{position:absolute;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:4;
+background:radial-gradient(circle at 34% 26%,rgba(255,255,255,.28) 0,rgba(255,255,255,0) 22%),radial-gradient(circle at 50% 55%,#2b1510 0,#0c0707 72%);
+border:1px solid rgba(255,140,90,.55);
+box-shadow:inset -16px -21px 42px rgba(244,74,34,.75),inset 12px 14px 30px rgba(255,255,255,.14),0 0 100px rgba(244,74,34,.55),0 0 240px rgba(244,74,34,.22)}
+.src:before{content:"";position:absolute;left:18%;top:9%;width:40%;height:19%;border-radius:50%;background:linear-gradient(180deg,rgba(255,255,255,.4),rgba(255,255,255,0));transform:rotate(-24deg);filter:blur(2px)}
+
+.card{color:#fff;text-decoration:none;cursor:pointer;transition:filter .3s,border-color .3s;position:absolute;box-sizing:border-box;padding:0 28px;border-radius:22px;z-index:5;display:flex;align-items:center;gap:22px;
+transform:perspective(1500px) rotateY(-11deg);transform-origin:0 50%;
 background:linear-gradient(165deg,rgba(255,255,255,.16),rgba(255,255,255,.04) 30%,rgba(14,14,18,.95) 70%),linear-gradient(0deg,rgba(244,74,34,.18),transparent 40%);
 border:1px solid rgba(255,255,255,.28);border-top-color:rgba(255,255,255,.55);
-box-shadow:inset 0 1px 0 rgba(255,255,255,.5),inset 0 -2px 0 rgba(244,74,34,.35),3px 2px 0 #26262c,6px 4px 0 #1b1b20,9px 6px 0 #131316,0 40px 60px rgba(0,0,0,.7),0 0 50px rgba(244,74,34,.12)}
-button.btn{color:#fff;font:inherit;cursor:pointer}
-a.cta{text-decoration:none}
-.hd .ar{direction:rtl;text-align:left}
-body.is-ar h1,body.is-ar .kick,body.is-ar .card p,body.is-ar .cta,body.is-ar .nav span{font-family:"Segoe UI",Tahoma,"Noto Sans Arabic",Arial,sans-serif;letter-spacing:0}
-html,body{background:#050507}
+box-shadow:inset 0 1px 0 rgba(255,255,255,.5),inset 0 -2px 0 rgba(244,74,34,.35),4px 3px 0 #26262c,8px 5px 0 #1b1b20,12px 8px 0 #131316,0 48px 70px rgba(0,0,0,.7),0 0 60px rgba(244,74,34,.12)}
+.card .lg{width:150px;display:flex;justify-content:center;flex:none}
+.card h3{margin:0 0 7px;font-size:18px;letter-spacing:.14em;white-space:nowrap}
+.card p{margin:0;font-size:14px;opacity:.7;white-space:nowrap}
 
-#stage{left:50%;top:50%;transform-origin:0 0}
+body.is-ar{font-family:Cairo,'Inter Variable',Tahoma,Arial,sans-serif}
+body.is-ar h1,body.is-ar .kick,body.is-ar .card p,body.is-ar .card h3,body.is-ar .cta{letter-spacing:0}
+body.is-ar .hd h1{direction:rtl}body.is-ar .hd h1 em{margin-left:0;margin-right:.25em}
+
+.card:hover,.card:focus-visible{filter:brightness(1.18);border-color:rgba(255,160,120,.6)}
+.card:focus-visible{outline:2px solid #F44A22;outline-offset:4px}

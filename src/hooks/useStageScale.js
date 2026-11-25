@@ -1,14 +1,13 @@
 import { useEffect, useState } from 'react';
-import { STAGE } from '../geometry.js';
+import { computeViewport } from '../geometry.js';
 
-/** Scale factor that fits the fixed design stage inside the window. */
-export function useStageScale() {
-  const calc = () => Math.min(window.innerWidth / STAGE.w, window.innerHeight / STAGE.h);
-  const [k, setK] = useState(calc);
+/** Scale, design width and vertical offset that make the hero fill the window. */
+export function useViewport() {
+  const [vp, setVp] = useState(() => computeViewport(window.innerWidth, window.innerHeight));
   useEffect(() => {
-    const on = () => setK(calc());
+    const on = () => setVp(computeViewport(window.innerWidth, window.innerHeight));
     window.addEventListener('resize', on);
     return () => window.removeEventListener('resize', on);
   }, []);
-  return k;
+  return vp;
 }
