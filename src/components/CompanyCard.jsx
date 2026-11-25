@@ -1,16 +1,13 @@
 import { forwardRef } from 'react';
-import { isRealLink } from '../config.js';
-import { UI } from '../content.js';
+import { linkProps } from './linkProps.js';
 
 const CompanyCard = forwardRef(function CompanyCard({ company, y, lang, layout }, ref) {
   const { cardX, CARD_W, CARD_H } = layout;
-  const real = isRealLink(company.url);
   return (
     <a
       ref={ref}
       className="card"
-      href={company.url || '#'}
-      {...(real ? { target: '_blank', rel: 'noopener noreferrer' } : { onClick: (e) => e.preventDefault(), title: UI[lang].comingSoon })}
+      {...linkProps(company.url, lang)}
       aria-label={`${company.name}, ${company.desc[lang]}`}
       style={{ top: y, left: cardX, width: CARD_W, height: CARD_H, marginTop: -CARD_H / 2 }}
     >

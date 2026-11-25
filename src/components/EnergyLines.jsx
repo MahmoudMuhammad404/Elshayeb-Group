@@ -9,10 +9,18 @@ export function EnergyLines({ layout, comets, ripples, nodeRings }) {
   let cometIdx = 0;
   let ringIdx = 0;
   return (
-    <svg width={W} height={DESIGN_H} viewBox={`0 0 ${W} ${DESIGN_H}`}>
+    <svg width={W} height={DESIGN_H} viewBox={`0 0 ${W} ${DESIGN_H}`} aria-hidden="true">
       <defs>
-        <filter id="g" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="6" /></filter>
-        <filter id="g2" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="18" /></filter>
+        <radialGradient id="ambient-glow" cx="50%" cy="50%" r="50%">
+          <stop offset="0" stopColor="#F44A22" stopOpacity=".11" />
+          <stop offset="0.65" stopColor="#F44A22" stopOpacity=".03" />
+          <stop offset="1" stopColor="#F44A22" stopOpacity="0" />
+        </radialGradient>
+        <radialGradient id="floor-glow" cx="50%" cy="50%" r="50%">
+          <stop offset="0" stopColor="#F44A22" stopOpacity=".55" />
+          <stop offset="0.6" stopColor="#F44A22" stopOpacity=".2" />
+          <stop offset="1" stopColor="#F44A22" stopOpacity="0" />
+        </radialGradient>
         <linearGradient id="lg" gradientUnits="userSpaceOnUse" x1={sx + R} x2={cardX}>
           <stop offset="0" stopColor="#F44A22" />
           <stop offset="1" stopColor="#ffc08a" />
@@ -22,8 +30,8 @@ export function EnergyLines({ layout, comets, ripples, nodeRings }) {
         </pattern>
       </defs>
       <rect width={W} height={DESIGN_H} fill="url(#dots)" opacity=".7" />
-      <ellipse cx={(sx + cardX) / 2 + 80} cy={sy + 20} rx={(cardX - sx) * 0.75} ry="360" fill="rgba(244,74,34,.08)" filter="url(#g2)" />
-      <ellipse cx={sx} cy={floorY} rx={R * 2.3} ry={R * 0.36} fill="rgba(244,74,34,.5)" filter="url(#g)" />
+      <ellipse cx={(sx + cardX) / 2 + 80} cy={sy + 20} rx={(cardX - sx) * 0.8} ry="380" fill="url(#ambient-glow)" />
+      <ellipse cx={sx} cy={floorY} rx={R * 2.5} ry={R * 0.4} fill="url(#floor-glow)" />
       <ellipse cx={sx} cy={floorY} rx={R * 3.8} ry={R * 0.62} fill="none" stroke="rgba(244,74,34,.25)" />
       <ellipse cx={sx} cy={floorY} rx={R * 5.1} ry={R * 0.86} fill="none" stroke="rgba(244,74,34,.12)" />
       <g transform={`rotate(-16 ${sx} ${sy})`}>
@@ -34,12 +42,13 @@ export function EnergyLines({ layout, comets, ripples, nodeRings }) {
       ))}
       {branches.map(({ y, d }) => (
         <g key={y}>
-          <path d={d} transform={`translate(0,${54 * s})`} fill="none" stroke="#000" strokeWidth={12 * s} opacity=".45" filter="url(#g)" />
-          <path d={d} fill="none" stroke="#F44A22" strokeWidth={24 * s} opacity=".3" filter="url(#g)" />
+          <path d={d} transform={`translate(0,${54 * s})`} fill="none" stroke="#000" strokeWidth={16 * s} opacity=".35" strokeLinecap="round" />
+          <path d={d} fill="none" stroke="#F44A22" strokeWidth={28 * s} opacity=".14" strokeLinecap="round" />
+          <path d={d} fill="none" stroke="#F44A22" strokeWidth={18 * s} opacity=".22" strokeLinecap="round" />
           <path d={d} fill="none" stroke="#9b2208" strokeWidth={11 * s} strokeLinecap="round" />
           <path d={d} fill="none" stroke="url(#lg)" strokeWidth={7.5 * s} strokeLinecap="round" transform="translate(0,-1)" />
           <path d={d} fill="none" stroke="#fff" strokeWidth={2 * s} opacity=".75" transform="translate(0,-3)" />
-          <path ref={(el) => (comets.current[cometIdx++] = el)} d={d} fill="none" stroke="#fff" strokeWidth={9 * s} strokeLinecap="round" filter="url(#g)" opacity=".9" />
+          <path ref={(el) => (comets.current[cometIdx++] = el)} d={d} fill="none" stroke="#ffb27a" strokeWidth={12 * s} strokeLinecap="round" opacity=".38" />
           <path ref={(el) => (comets.current[cometIdx++] = el)} d={d} fill="none" stroke="#fff" strokeWidth={5 * s} strokeLinecap="round" />
           <polygon points={arrow(y)} fill="#ffb27a" />
           <circle cx={cardX} cy={y} r="11" fill="#F44A22" stroke="#fff" strokeWidth="2.5" />
@@ -55,11 +64,10 @@ export function EnergyLines({ layout, comets, ripples, nodeRings }) {
 export function RingFront({ layout }) {
   const { W, R, sx, sy } = layout;
   return (
-    <svg width={W} height={DESIGN_H} viewBox={`0 0 ${W} ${DESIGN_H}`} style={{ zIndex: 6 }}>
-      <defs><filter id="g3"><feGaussianBlur stdDeviation="6" /></filter></defs>
+    <svg width={W} height={DESIGN_H} viewBox={`0 0 ${W} ${DESIGN_H}`} style={{ zIndex: 6 }} aria-hidden="true">
       <g transform={`rotate(-16 ${sx} ${sy})`}>
+        <path d={`M${sx - R * 1.9} ${sy} A${R * 1.9} ${R * 0.48} 0 0 0 ${sx + R * 1.9} ${sy}`} fill="none" stroke="#F44A22" strokeWidth="10" opacity=".24" strokeLinecap="round" />
         <path d={`M${sx - R * 1.9} ${sy} A${R * 1.9} ${R * 0.48} 0 0 0 ${sx + R * 1.9} ${sy}`} fill="none" stroke="rgba(255,190,150,.9)" strokeWidth="3" />
-        <path d={`M${sx - R * 1.9} ${sy} A${R * 1.9} ${R * 0.48} 0 0 0 ${sx + R * 1.9} ${sy}`} fill="none" stroke="#F44A22" strokeWidth="9" opacity=".35" filter="url(#g3)" />
       </g>
     </svg>
   );

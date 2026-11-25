@@ -28,8 +28,11 @@ export default function App() {
 
   return (
     <>
+      <a className="skip-link" href="#main-content">
+        {lang === 'ar' ? 'تخطي إلى المحتوى الرئيسي' : 'Skip to main content'}
+      </a>
       <Header lang={lang} onToggleLang={() => setLang(lang === 'en' ? 'ar' : 'en')} />
-      <main>
+      <main id="main-content">
         <Hero lang={lang} />
         <Companies lang={lang} />
         <About lang={lang} />

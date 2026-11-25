@@ -1,29 +1,28 @@
-// Short text used inside the hero cards. Arabic strings are drafts, to be reviewed.
+// Short text used inside the hero cards. Derived from COMPANY_DETAILS + COMPANY_LINKS as single source of truth.
 import { COMPANY_LINKS } from './config.js';
+import { COMPANY_DETAILS } from './content.js';
 
-export const COMPANIES = [
-  {
-    id: 'goads',
-    url: COMPANY_LINKS.goads,
+const HERO_META = {
+  goads: {
     name: 'GO ADS HUB',
-    logo: 'assets/goads.png',
     logoStyle: { maxWidth: 122, maxHeight: 44 },
     desc: { en: 'Content · Marketing · Media Buying', ar: 'محتوى · تسويق · شراء إعلامي' },
   },
-  {
-    id: 'zeroo1',
-    url: COMPANY_LINKS.zeroo1,
+  zeroo1: {
     name: 'ZEROO1',
-    logo: 'assets/zeroo1.svg',
     logoStyle: { maxWidth: 116, maxHeight: 40 },
     desc: { en: 'Programming', ar: 'برمجة' },
   },
-  {
-    id: 'elmedia',
-    url: COMPANY_LINKS.elmedia,
+  elmedia: {
     name: 'ELSHAYEB MEDIA',
-    logo: 'assets/el_word.png',
     logoStyle: { width: 118 },
     desc: { en: 'Filming · Media Production', ar: 'تصوير · إنتاج إعلامي' },
   },
-];
+};
+
+export const COMPANIES = COMPANY_DETAILS.map((d) => ({
+  id: d.id,
+  url: COMPANY_LINKS[d.id],
+  logo: d.logo,
+  ...HERO_META[d.id],
+}));

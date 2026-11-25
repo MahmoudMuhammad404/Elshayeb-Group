@@ -7,7 +7,7 @@ export function computeViewport(innerWidth, innerHeight) {
   const k = Math.min(innerWidth / MIN_W, innerHeight / DESIGN_H);
   const W = innerWidth / k;
   const H = innerHeight / k;
-  return { k, W, H, offsetY: Math.max(0, (H - DESIGN_H) / 2) };
+  return { k, W, H, vw: innerWidth, offsetY: Math.min(120, Math.max(0, (H - DESIGN_H) / 2)) };
 }
 
 const rad = (d) => (d * Math.PI) / 180;
@@ -19,7 +19,7 @@ export function computeLayout(W) {
   const cardX = W - pad - CARD_W; // x of the orange nodes (left edge of the cards)
   const ys = [425, 565, 705];
   const R = 104; // sphere radius
-  const sx = Math.max(pad + 220, Math.round(cardX * 0.36));
+  const sx = pad + Math.round(R * 1.65); // balanced left margin while keeping the tilted ring (1.9*R) inside viewport
   const sy = ys[1];
   const branches = ys.map((y, i) => {
     const a = rad([-24, 0, 24][i]);

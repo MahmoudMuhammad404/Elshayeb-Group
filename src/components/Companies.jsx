@@ -37,7 +37,7 @@ export default function Companies({ lang }) {
                 </div>
                 <a className={`co-vis co-vis-${d.id}`} {...lp} aria-label={`${d.name[lang]}, ${UI[lang].visit}`}>
                   <span className="co-glow" aria-hidden="true" />
-                  <img src={d.logo} alt="" />
+                  <img src={d.logo} alt="" loading="lazy" decoding="async" />
                   <span className="co-corner" aria-hidden="true" />
                 </a>
               </Reveal>

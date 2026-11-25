@@ -32,7 +32,7 @@ export default function Contact({ lang, topic, setTopic }) {
       setStatus('notReady');
       return;
     }
-    const subject = `Website inquiry: ${CONTACT_COPY.en.topics[topic]}`;
+    const subject = `Website inquiry: ${CONTACT_COPY.en.topics[topic] || CONTACT_COPY.en.topics.general}`;
     const body = `${form.message.trim()}\n\n${form.name.trim()}\n${form.email.trim()}`;
     setStatus('opening');
     window.location.href = `mailto:${CONTACT.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;

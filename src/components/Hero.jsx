@@ -8,10 +8,9 @@ export const MOBILE_BREAKPOINT = 1000;
 
 /** Desktop: the approved fixed-design hero scaled to fill the window. Narrow screens: a stacked version of the same idea. */
 export default function Hero({ lang }) {
-  const { k, W, H, offsetY } = useViewport();
+  const { k, W, H, vw, offsetY } = useViewport();
   const copy = HERO[lang];
-  const innerWidth = Math.round(W * k);
-  if (innerWidth < MOBILE_BREAKPOINT) {
+  if (vw < MOBILE_BREAKPOINT) {
     return (
       <section id="top" className="hero hero-m">
         <HeroMobile copy={copy} lang={lang} />

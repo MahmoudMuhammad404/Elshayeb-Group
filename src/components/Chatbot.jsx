@@ -2,16 +2,16 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import Robot from './Robot.jsx';
 import { CHAT_UI, INTENTS, START_CHIPS, isArabicText, matchIntent } from '../chatbot/knowledge.js';
 
-let nextId = 1;
 const REPLY_DELAY = 650;
 
 export default function Chatbot({ lang }) {
   const ui = CHAT_UI[lang];
+  const nextIdRef = useRef(1);
   const [open, setOpen] = useState(false);
   const [teaser, setTeaser] = useState(false);
   const [teaserDismissed, setTeaserDismissed] = useState(false);
   const [chatLang, setChatLang] = useState(lang);
-  const [messages, setMessages] = useState(() => [{ id: nextId++, role: 'bot', greeting: true, lang }]);
+  const [messages, setMessages] = useState(() => [{ id: 0, role: 'bot', greeting: true, lang }]);
   const [lastIntent, setLastIntent] = useState(null);
   const [typing, setTyping] = useState(false);
   const [text, setText] = useState('');
@@ -61,11 +61,12 @@ export default function Chatbot({ lang }) {
   const ask = useCallback(
     (intent, userText, replyLang) => {
       if (typing) return;
-      setMessages((m) => [...m, { id: nextId++, role: 'user', text: userText, lang: replyLang }]);
+      clearTimeout(timer.current);
+      setMessages((m) => [...m, { id: nextIdRef.current++, role: 'user', text: userText, lang: replyLang }]);
       setChatLang(replyLang);
       setTyping(true);
       timer.current = setTimeout(() => {
-        setMessages((m) => [...m, { id: nextId++, role: 'bot', intent, lang: replyLang }]);
+        setMessages((m) => [...m, { id: nextIdRef.current++, role: 'bot', intent, lang: replyLang }]);
         setLastIntent(intent);
         setTyping(false);
       }, REPLY_DELAY);
@@ -96,11 +97,11 @@ export default function Chatbot({ lang }) {
   return (
     <div className="bot" dir={lang === 'ar' ? 'rtl' : 'ltr'}>
       {open && (
-        <section className="bot-panel" role="dialog" aria-label={ui.name}>
+        <section className="bot-panel" role="dialog" aria-modal="false" aria-labelledby="bot-title">
           <header className="bot-hd">
             <span className="av" aria-hidden="true"><Robot head /></span>
             <div className="bot-who">
-              <b>{ui.name}</b>
+              <b id="bot-title">{ui.name}</b>
               <small><i aria-hidden="true" /> {ui.online}</small>
             </div>
             <button type="button" className="bot-x" onClick={close} aria-label={ui.close}>×</button>
@@ -114,8 +115,8 @@ export default function Chatbot({ lang }) {
                 <div key={m.id} className={`msg from-${m.role}`}>
                   <div className="bub" dir={bubbleLang === 'ar' ? 'rtl' : 'ltr'}>{body}</div>
                   {goId && !typing && (
-                    <button type="button" className="go" onClick={() => go(goId)}>
-                      {CHAT_UI[chatLang].goTo[goId]} <span aria-hidden="true">{lang === 'ar' ? '←' : '→'}</span>
+                    <button type="button" className="go" dir={chatLang === 'ar' ? 'rtl' : 'ltr'} onClick={() => go(goId)}>
+                      {CHAT_UI[chatLang].goTo[goId]} <span aria-hidden="true">{chatLang === 'ar' ? '←' : '→'}</span>
                     </button>
                   )}
                 </div>

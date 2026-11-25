@@ -20,8 +20,8 @@ export default function About({ lang }) {
               <path d="M0 50 C 30 50, 30 88, 62 88" vectorEffect="non-scaling-stroke" />
             </svg>
             <div className="org-src">
-              <img src="assets/el_mark.png" alt="" />
-              <img src="assets/el_word.png" alt="" />
+              <img src="assets/el_mark.png" alt="" loading="lazy" decoding="async" />
+              <img src="assets/el_word.png" alt="" loading="lazy" decoding="async" />
             </div>
             <span className="org-cap">{s.parent}</span>
             {COMPANY_DETAILS.map((d, i) => (
